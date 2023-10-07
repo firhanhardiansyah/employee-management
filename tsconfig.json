@@ -5,10 +5,11 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
+    "noImplicitOverride": false,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
@@ -22,7 +23,26 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@pages/*": ["src/app/pages/*"],
+      "@static/*": ["src/app/static/*"],
+      "@blocks/*": ["src/app/shared/components/blocks/*"],
+      "@forms/*": ["src/app/shared/components/forms/*"],
+      "@layouts/*": ["src/app/shared/components/layouts/*"],
+      "@modals/*": ["src/app/shared/components/modals/*"],
+      "@enums/*": ["src/app/shared/enums/*"],
+      "@directives/*": ["src/app/shared/directives/*"],
+      "@pipes/*": ["src/app/shared/pipes/*"],
+      "@validators/*": ["src/app/shared/validators/*"],
+      "@factories/*": ["src/app/shared/factories/*"],
+      "@guards/*": ["src/app/shared/guards/*"],
+      "@helpers/*": ["src/app/shared/helpers/*"],
+      "@models/*": ["src/app/shared/models/*"],
+      "@interfaces/*": ["src/app/shared/interfaces/*"],
+      "@services/*": ["src/app/shared/services/*"],
+      "@env/*": ["src/environments/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

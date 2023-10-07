@@ -1,0 +1,124 @@
+{
+  "employee": [
+    {
+      "username": "firhan_hardiansyah",
+      "password": "firhan123",
+      "firstName": "Firhan",
+      "lastName": "Hardiansyah",
+      "email": "firhan.hardiansyah@example.com",
+      "birthDate": "1990-08-15T00:00:00Z",
+      "basicSalary": 10000000.0,
+      "status": "Active",
+      "group": "IT",
+      "description": "Software Developer"
+    },
+    {
+      "username": "john_doe",
+      "password": "john_doe123",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "birthDate": "1990-05-15T00:00:00Z",
+      "basicSalary": 50000.0,
+      "status": "Active",
+      "group": "Engineering",
+      "description": "Software Engineer"
+    },
+    {
+      "username": "iman_sanjaya",
+      "password": "iman123",
+      "firstName": "Iman",
+      "lastName": "Sanjaya",
+      "email": "iman.sanjaya@example.com",
+      "birthDate": "1987-04-12T00:00:00Z",
+      "basicSalary": 85000.0,
+      "status": "Active",
+      "group": "Technology",
+      "description": "Lead Frontend Developer"
+    },
+    {
+      "username": "fajarpratama",
+      "password": "fajarpratama123",
+      "firstName": "Fajar",
+      "lastName": "Pratama",
+      "email": "fajar.pratama@example.com",
+      "birthDate": "1992-11-08T00:00:00Z",
+      "basicSalary": 65000.0,
+      "status": "Active",
+      "group": "Technology",
+      "description": "Senior Developer"
+    },
+    {
+      "username": "taufik_hidayah",
+      "password": "password123",
+      "firstName": "Taufik",
+      "lastName": "Hidayah",
+      "email": "taufik.hidayah@example.com",
+      "birthDate": "1990-12-10T00:00:00Z",
+      "basicSalary": 80000.0,
+      "status": "Active",
+      "group": "IT",
+      "description": "Lead Developer"
+    },
+    {
+      "username": "noval_mahardika",
+      "password": "supersecret123",
+      "firstName": "Noval",
+      "lastName": "Mahardika",
+      "email": "noval.mahardika@example.com",
+      "birthDate": "1988-09-21T00:00:00Z",
+      "basicSalary": 85000.0,
+      "status": "Active",
+      "group": "Engineering",
+      "description": "Senior Software Developer"
+    },
+    {
+      "username": "ilham_wijaya",
+      "password": "s3cur3P@ssw0rd",
+      "firstName": "Ilham",
+      "lastName": "Wijaya",
+      "email": "ilham.wijaya@example.com",
+      "birthDate": "1993-07-18T00:00:00Z",
+      "basicSalary": 90000.0,
+      "status": "Active",
+      "group": "IT",
+      "description": "Lead Software Engineer"
+    },
+    {
+      "username": "epul_saepuloh",
+      "password": "SecureP@ssw0rd",
+      "firstName": "Epul",
+      "lastName": "Saepuloh",
+      "email": "epul.saepuloh@example.com",
+      "birthDate": "1995-05-08T00:00:00Z",
+      "basicSalary": 95000.0,
+      "status": "Active",
+      "group": "IT",
+      "description": "Senior Web Developer"
+    },
+    {
+      "username": "asep_sutisna",
+      "password": "StrongP@ss!23",
+      "firstName": "Asep",
+      "lastName": "Sutisna",
+      "email": "asep.sutisna@example.com",
+      "birthDate": "1980-12-15T00:00:00Z",
+      "basicSalary": 85000.0,
+      "status": "Active",
+      "group": "HR",
+      "description": "HR Manager"
+    },
+    {
+      "username": "deden_gonzales",
+      "password": "P@ssw0rd123",
+      "firstName": "Deden",
+      "lastName": "Gonzales",
+      "email": "deden.gonzales@example.com",
+      "birthDate": "1992-08-20T00:00:00Z",
+      "basicSalary": 75000.0,
+      "status": "Active",
+      "group": "Finance",
+      "description": "Financial Analyst"
+    }
+  ]
+}

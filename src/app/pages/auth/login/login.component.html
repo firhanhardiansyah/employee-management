@@ -1,0 +1,21 @@
+<div class="h-full bg-primary-50">
+  <div class="h-4/5 flex flex-row justify-center items-center">
+    <div
+      class="bg-white rounded-lg shadow-md flex flex-col items-center space-y-3 mx-4 p-5 w-full sm:w-2/3 lg:w-2/5 xl:w-2/6 2xl:w-3/12"
+    >
+      <div class="flex flex-row space-x-3 items-center">
+        <img src="assets/icons/logo.png" alt="favicon" class="w-12 h-12" />
+        <div class="text-2xl font-medium">{{ appName }}</div>
+      </div>
+
+      <div class="text-lg font-medium">Log in to continue</div>
+
+      <app-login-form
+        class="w-full"
+        (formGroupEmit)="getFormValue($event)"
+        (onSubmitted)="onSubmitted()"
+        [isLoading]="isLoading"
+      ></app-login-form>
+    </div>
+  </div>
+</div>

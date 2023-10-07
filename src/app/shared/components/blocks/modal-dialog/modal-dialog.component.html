@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>{{ modalData.title }}</h2>
+
+<mat-dialog-content class="mat-typography">
+  <p>{{ modalData.content }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>{{ modalData.cancelButtonText }}</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    *ngIf="modalData.confirmButtonText"
+  >
+    {{ modalData.confirmButtonText }}
+  </button>
+</mat-dialog-actions>
