@@ -1,0 +1,166 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="grid grid-cols-3 gap-4">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        placeholder="Enter your username"
+        type="text"
+        formControlName="username"
+      />
+      <mat-error *ngIf="formGroup.controls.username.hasError('required')">
+        This username is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        placeholder="Enter your first name"
+        type="text"
+        formControlName="firstName"
+      />
+      <mat-error *ngIf="formGroup.controls.firstName.hasError('required')">
+        This first name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input
+        matInput
+        placeholder="Enter your last name"
+        type="text"
+        formControlName="lastName"
+      />
+      <mat-error *ngIf="formGroup.controls.lastName.hasError('required')">
+        This last name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        placeholder="Enter your emal"
+        type="email"
+        formControlName="email"
+      />
+      <mat-error *ngIf="formGroup.controls.email.hasError('required')">
+        This email is required.
+      </mat-error>
+      <mat-error *ngIf="formGroup.controls.email.hasError('email')">
+        This field must be an email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Birth Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="birthDate"
+        [max]="today"
+        (dateChange)="onDateEvent('change', $event)"
+        formControlName="birthDate"
+        readonly
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="birthDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #birthDate></mat-datepicker>
+      <mat-error *ngIf="formGroup.controls.birthDate.hasError('required')">
+        This birth date is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Basic Salary</mat-label>
+      <input
+        matInput
+        placeholder="Enter your last name"
+        type="number"
+        formControlName="basicSalary"
+      />
+      <mat-error *ngIf="formGroup.controls.basicSalary.hasError('required')">
+        This basic salary is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <input
+        matInput
+        placeholder="Enter your last name"
+        type="text"
+        formControlName="status"
+      />
+      <mat-error *ngIf="formGroup.controls.status.hasError('required')">
+        This status is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select
+        [formControl]="formGroup.controls.group"
+        placeholder="Group"
+        #singleSelect
+      >
+        <mat-option>
+          <ngx-mat-select-search
+            [formControl]="employeeGroupsFilterCtrl"
+            placeholderLabel="Find group..."
+            noEntriesFoundLabel="'no matching group found'"
+          ></ngx-mat-select-search>
+        </mat-option>
+        <mat-option
+          *ngFor="let group of filteredEmployeeGroups | async"
+          [value]="group"
+        >
+          {{ group.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formGroup.controls.description.hasError('required')">
+        This group is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input
+        matInput
+        placeholder="Enter your last name"
+        type="text"
+        formControlName="description"
+      />
+      <mat-error *ngIf="formGroup.controls.description.hasError('required')">
+        This description is required.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="mt-4 flex space-x-4">
+    <button type="submit" mat-raised-button color="success">
+      <div *ngIf="!isLoading" class="flex space-x-2 items-center">
+        <mat-icon fontIcon="save"></mat-icon>
+        <div>Save</div>
+      </div>
+      <mat-spinner
+        *ngIf="isLoading"
+        diameter="25"
+        class="custom-spinner"
+      ></mat-spinner>
+    </button>
+    <button
+      type="button"
+      mat-raised-button
+      color="warn"
+      (click)="onCancel()"
+      [disabled]="isLoading"
+    >
+      <mat-icon fontIcon="close"></mat-icon>
+      <div>Cancel</div>
+    </button>
+  </div>
+</form>

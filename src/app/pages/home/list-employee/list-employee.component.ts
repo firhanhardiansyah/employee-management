@@ -7,6 +7,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { Router } from '@angular/router';
+import { StorageHelper } from '@helpers/storage.helper';
+import { StorageKey } from '@enums/storage-key.enum';
 
 @Component({
   selector: 'app-list-employee',
@@ -28,27 +31,72 @@ export class ListEmployeeComponent implements OnInit, AfterViewInit {
 
   public dataSource = new MatTableDataSource<EmployeeInterface>();
 
+  public tmpSearchValue: string = null;
+
+  private filterObject = {
+    search: '',
+  };
+
   private employees: EmployeeInterface[] = [];
 
   constructor(
     private employeeService: EmployeeService,
-    private liveAnnouncer: LiveAnnouncer
+    private liveAnnouncer: LiveAnnouncer,
+    private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.getEmployees();
-  }
+  ngOnInit(): void {}
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
+    await this.getEmployees();
+
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    this.dataSourceFilter();
+
+    const tmpData =
+      StorageHelper.getItem(StorageKey.TMP_EMPLOYEE_DATA) || undefined;
+
+    if (tmpData) {
+      this.tmpSearchValue = tmpData['search'];
+      this.dataSource.filter = JSON.stringify(tmpData);
+    }
   }
 
-  applyFilter(event) {
-    const value = event.target.value;
-    const filterValue = value.trim().toLowerCase();
+  dataSourceFilter() {
+    this.dataSource.filterPredicate = (data, filter: string) => {
+      const filterData = JSON.parse(filter);
 
-    this.dataSource.filter = filterValue;
+      return (
+        !filterData.search ||
+        data.firstName
+          .toString()
+          .trim()
+          .toLowerCase()
+          .includes(filterData.search) ||
+        data.group
+          .toString()
+          .trim()
+          .toLowerCase()
+          .includes(filterData.search) ||
+        data.description
+          .toString()
+          .trim()
+          .toLowerCase()
+          .includes(filterData.search) ||
+        data.status.toString().trim().toLowerCase().includes(filterData.search)
+      );
+    };
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.filterObject.search = filterValue.trim().toLowerCase();
+    this.dataSource.filter = JSON.stringify(this.filterObject);
+
+    this.tmpSearchValue = this.filterObject.search;
+    StorageHelper.setItem(StorageKey.TMP_EMPLOYEE_DATA, this.filterObject);
   }
 
   public onSortChange(sortState: Sort) {
@@ -59,8 +107,17 @@ export class ListEmployeeComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public onDetail(row): void {
-    console.log('onDetail employee ==> ', row);
+  public onAddForm(): void {
+    this.router.navigate(['home', 'add-employee']);
+  }
+
+  public onDetail(data: EmployeeInterface): void {
+    this.tmpSearchValue = this.filterObject.search;
+    StorageHelper.setItem(StorageKey.TMP_EMPLOYEE_DATA, this.filterObject);
+
+    this.router.navigate(['home', 'detail-employee', data.username], {
+      state: data,
+    });
   }
 
   public onUpdate(event, employee: EmployeeInterface): void {
@@ -97,7 +154,7 @@ export class ListEmployeeComponent implements OnInit, AfterViewInit {
         .firstName;
 
     return {
-      id: index,
+      id: index.toString(),
       username: randEmployee.username,
       password: randEmployee.password,
       firstName: randFirstName,

@@ -1,15 +1,13 @@
 <div class="flex justify-between items-center">
   <section>
-    <button mat-raised-button color="primary">Add Employee</button>
+    <button mat-raised-button color="primary" (click)="onAddForm()">
+      Add Employee
+    </button>
   </section>
 
   <mat-form-field>
     <mat-icon matPrefix fontIcon="search"></mat-icon>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="Search..."
-    />
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search..." [value]="tmpSearchValue" />
   </mat-form-field>
 </div>
 

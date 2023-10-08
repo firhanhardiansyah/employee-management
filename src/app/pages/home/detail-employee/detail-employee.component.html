@@ -1,1 +1,92 @@
-<p>detail-employee works!</p>
+<div class="container">
+  <div class="text-2xl mb-4">Detail Employee</div>
+
+  <div class="bg-primary-50 shadow-md rounded-lg p-4">
+    <div>
+      <div class="text-2xl">
+        {{ employee.firstName }} {{ employee.lastName }}
+      </div>
+      <div class="text-base">
+        <span>{{ employee.description }}</span>
+        <span> | </span>
+        <span class="text-gray-600">{{ employee.group }}</span>
+      </div>
+    </div>
+
+    <div class="border border-slate-400 my-2"></div>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div>
+        <div class="text-sm text-gray-500">Full Name</div>
+        <div class="text-lg">
+          {{ employee.firstName }} {{ employee.lastName }}
+        </div>
+      </div>
+
+      <div>
+        <div class="text-sm text-gray-500">First Name</div>
+        <div class="text-lg">
+          {{ employee.firstName }}
+        </div>
+      </div>
+
+      <div>
+        <div class="text-sm text-gray-500">Last Name</div>
+        <div class="text-lg">
+          {{ employee.lastName }}
+        </div>
+      </div>
+
+      <div>
+        <div class="text-sm text-gray-500">Email</div>
+        <div class="text-lg">
+          {{ employee.email }}
+        </div>
+      </div>
+
+      <div>
+        <div class="text-sm text-gray-500">Birth Date</div>
+        <div class="text-lg">
+          {{ employee.birthDate }}
+        </div>
+      </div>
+
+      <div>
+        <div class="text-sm text-gray-500">Basic Salary</div>
+        <div class="text-lg">
+          {{ employee.basicSalary | currencyFormat }}
+        </div>
+      </div>
+
+      <div>
+        <div class="text-sm text-gray-500">Status</div>
+        <div class="text-lg">
+          {{ employee.status }}
+        </div>
+      </div>
+
+      <div>
+        <div class="text-sm text-gray-500">Group</div>
+        <div class="text-lg">
+          {{ employee.group }}
+        </div>
+      </div>
+
+      <div>
+        <div class="text-sm text-gray-500">Description</div>
+        <div class="text-lg">
+          {{ employee.description }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="my-4"
+    (click)="onBackToHome()"
+  >
+    OK
+  </button>
+</div>

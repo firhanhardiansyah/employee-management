@@ -1,0 +1,15 @@
+.mdc-button--raised.mat-success {
+  @apply bg-green-500 text-white;
+}
+
+.mdc-button--raised.mat-warning {
+  @apply bg-yellow-400 text-black;
+}
+
+.mdc-button--raised.mat-gray {
+  @apply bg-gray-100 text-black;
+}
+
+:host ::ng-deep .custom-spinner circle{   
+  @apply stroke-white;
+}
